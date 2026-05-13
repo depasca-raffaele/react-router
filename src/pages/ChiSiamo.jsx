@@ -1,7 +1,7 @@
 export default function ChiSiamo() {
   return (
-    <div className="container mt-5">
-      <section>
+    <div className="container">
+      <section className="about-panel">
         <h1 className="page-title">Chi Siamo</h1>
         <p>
           NotSoEStore nasce per rendere lo shopping online semplice, rapido e
@@ -17,5 +17,5 @@ export default function ChiSiamo() {
         </p>
       </section>
     </div>
-  )
+  );
 }

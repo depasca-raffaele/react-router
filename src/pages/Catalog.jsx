@@ -27,29 +27,37 @@ export default function Catalog() {
     if (loading) return <div className="container mt-5"><p>Caricamento...</p></div>;
     if (error) return <div className="container mt-5"><p>Errore: {error}</p></div>;
 
-    return (
-        <div className="container mt-5">
-            <h1>Catalogo Prodotti</h1>
-            <div className="row">
-                {products.map(product => (
-                    <div key={product.id} className="col-md-4 mb-4">
-                        <div className="card h-100">
-                            <img
-                                src={product.image}
-                                className="card-img-top"
-                                alt={product.title}
-                                style={{ height: '250px', objectFit: 'contain', padding: '10px' }}
-                            />
-                            <div className="card-body">
-                                <h5 className="card-title">{product.title}</h5>
-                                <p className="card-text text-truncate">{product.description}</p>
-                                <p className="card-text"><strong>${product.price}</strong></p>
-                                <button className="btn btn-primary">Aggiungi al carrello</button>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div className="container mt-4">
+      <h1 className="page-title">Catalogo Prodotti</h1>
+      <p className="page-subtitle">Scegli tra i best seller del momento.</p>
+
+      <div className="row g-4">
+        {products.map((product) => (
+          <div key={product.id} className="col-12 col-sm-6 col-lg-4">
+            <article className="card product-card">
+              <div className="product-image-wrap">
+                <img
+                  src={product.image}
+                  className="card-img-top"
+                  alt={product.title}
+                />
+              </div>
+
+              <div className="card-body">
+                <h2 className="card-title">{product.title}</h2>
+                <p className="card-text">
+                  {product.description.length > 110
+                    ? product.description.slice(0, 110) + "..."
+                    : product.description}
+                </p>
+                <div className="product-price">${product.price}</div>
+                <button className="btn-shop">Aggiungi al carrello</button>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
