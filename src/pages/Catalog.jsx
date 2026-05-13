@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 export default function Catalog() {
     const [products, setProducts] = useState([]);
@@ -35,6 +36,10 @@ export default function Catalog() {
       <div className="row g-4">
         {products.map((product) => (
           <div key={product.id} className="col-12 col-sm-6 col-lg-4">
+            <Link
+              to={"/catalog/" + product.id}
+              className="text-decoration-none text-reset product-link"
+            >
             <article className="card product-card">
               <div className="product-image-wrap">
                 <img
@@ -55,6 +60,7 @@ export default function Catalog() {
                 <button className="btn-shop">Aggiungi al carrello</button>
               </div>
             </article>
+            </Link>
           </div>
         ))}
       </div>
